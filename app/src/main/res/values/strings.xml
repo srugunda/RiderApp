@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Eris Rider</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_pending_jobs_fragemnt">Hello pending jobs fragment</string>
+    <string name="hello_accepted_jobs_fragment">Hello Accepted Jobs Fragement</string>
+    <string name="pending_jobs_label">Pending Jobs</string>
+    <string name="accepted_jobs_label">Accepted Jobs</string>
+
+</resources>
