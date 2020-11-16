@@ -1,5 +1,6 @@
 package com.solo.erisrider
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,12 +11,25 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_pending_jobs.*
+import kotlinx.android.synthetic.main.fragment_pending_jobs.*
+import kotlinx.android.synthetic.main.fragment_pending_jobs.fragment_cardview1
+import kotlinx.android.synthetic.main.fragment_pending_jobs.fragment_cardview2
+import kotlinx.android.synthetic.main.fragment_pending_jobs.fragment_cardview3
+import kotlinx.android.synthetic.main.fragment_pending_jobs.ftv_invoice_number
+import kotlinx.android.synthetic.main.fragment_pending_jobs.ftv_invoice_number_value
+import kotlinx.android.synthetic.main.fragment_pending_jobs.ftv_invoice_number_value2
+import kotlinx.android.synthetic.main.fragment_pending_jobs.ftv_invoice_number_value3
+import kotlinx.android.synthetic.main.fragment_pending_jobs.ftv_recipient_name_value
+import kotlinx.android.synthetic.main.fragment_pending_jobs.ftv_recipient_name_value2
+import kotlinx.android.synthetic.main.fragment_pending_jobs.ftv_recipient_name_value3
+import kotlinx.android.synthetic.main.fragment_pending_jobs.progress_spinner
 
 
 class PendingJobsFragment : Fragment() {
 
     val db = Firebase.firestore
     val pendingJobsList = ArrayList<Delivery>()
+    val REQUEST_CODE = 1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -25,10 +39,36 @@ class PendingJobsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        hideViews() //this is done for a moment so that we dont have blanks displayed during DB call
+
         createSampleData() //create sample data and add it to firestore
 
         retrieveData()
 
+        fragment_cardview1.setOnClickListener {
+            val detailIntent = Intent(getActivity(), DetailsActivity::class.java)
+            detailIntent.putExtra("invoice_number",ftv_invoice_number_value.toString())
+            startActivityForResult(detailIntent, REQUEST_CODE)
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        //update the screen depending on whether user selected accept job or close
+    }
+
+    private fun hideViews(){
+        fragment_cardview1.setVisibility(View.GONE)
+        fragment_cardview2.setVisibility(View.GONE)
+        fragment_cardview3.setVisibility(View.GONE)
+    }
+
+    private fun showViews(){
+        fragment_cardview1.setVisibility(View.VISIBLE)
+        fragment_cardview2.setVisibility(View.VISIBLE)
+        fragment_cardview3.setVisibility(View.VISIBLE)
     }
 
     private fun displayPendingJobsList(){
@@ -36,12 +76,15 @@ class PendingJobsFragment : Fragment() {
         for(item in pendingJobsList){
             if(ftv_invoice_number_value.text.isEmpty()){
                 ftv_invoice_number_value.setText(item.invoiceNumber.toString())
+                ftv_recipient_name_value.setText(item.recipientName)
             }
             else if(ftv_invoice_number_value2.text.isEmpty()){
-                ftv_invoice_number_value.setText(item.invoiceNumber.toString())
+                ftv_invoice_number_value2.setText(item.invoiceNumber.toString())
+                ftv_recipient_name_value2.setText(item.recipientName)
             }
             else if(ftv_invoice_number_value3.text.isEmpty()){
-                ftv_invoice_number_value.setText(item.invoiceNumber.toString())
+                ftv_invoice_number_value3.setText(item.invoiceNumber.toString())
+                ftv_recipient_name_value3.setText(item.recipientName)
             }
         }
     }
@@ -55,6 +98,8 @@ class PendingJobsFragment : Fragment() {
                     pendingJobsList.add(deliveryObject)
                 }
                 displayPendingJobsList()
+                showViews()
+                progress_spinner.setVisibility(View.GONE)
             }
             .addOnFailureListener { exception ->
                 Log.d("ERROR TAG", "Error getting documents: ", exception)

@@ -10,14 +10,16 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
 
-        val intent = intent
-        val invoiceNumber = intent.getStringExtra("Invoice_Number")
-
-        textView.text = invoiceNumber
+        //populate the view with data from firestore based on the invoice number.
 
         //set click listener for accept job button
         button_accept_job.setOnClickListener {
-            //adds the job to a DB node of accepted jobs based on the invoice number
+            //adds the job to a firestore collection of accepted jobs based on the invoice number
+
+
+
+            //closes the view and goes to the accepted jobs fragment
+            //removes that job from the pending jobs fragment
         }
     }
 }
