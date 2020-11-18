@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "79106665841",
+    "firebase_url": "https://rider-app-e8513.firebaseio.com",
+    "project_id": "rider-app-e8513",
+    "storage_bucket": "rider-app-e8513.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79106665841:android:fcebff25408f5a41821ad0",
+        "android_client_info": {
+          "package_name": "com.solo.erisrider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "79106665841-11hkgfol5oui0fihme4o1mdg3kuqdr5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBENlGnRUxNVX7_q9vDd1yUhHz-TX96PJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "79106665841-11hkgfol5oui0fihme4o1mdg3kuqdr5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

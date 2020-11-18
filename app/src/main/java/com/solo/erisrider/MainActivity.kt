@@ -13,13 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_tablayout)
 
-        /*
-        cardview_1.setOnClickListener {
-            val intent = Intent(this, DetailsActivity::class.java)
-            intent.putExtra("Invoice_Number", invoice_number.text.toString())
-            startActivity(intent)
-        }*/
-
         setSupportActionBar(toolbar)
 
         tab_layout.addTab(tab_layout.newTab().setText(R.string.pending_jobs_label))
@@ -33,8 +26,17 @@ class MainActivity : AppCompatActivity() {
         val adapter = PagerAdapter(this, supportFragmentManager, tab_layout.tabCount)
         view_pager.adapter = adapter
 
+
+        //If returning from detail screen with "Accepted Job", go to Accepted job fragment
+        val intent = intent
+        val sPosition = intent.getStringExtra("fragment_position" )
+        if(sPosition!=null) {
+            view_pager.setCurrentItem(sPosition.toInt())
+        }
+
         // Setting a listener for clicks.
         view_pager.addOnPageChangeListener(TabLayoutOnPageChangeListener(tab_layout))
+
         tab_layout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 view_pager.setCurrentItem(tab.position)

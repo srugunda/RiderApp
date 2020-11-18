@@ -3,13 +3,175 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AcceptedJobsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/relative_layout_accepted_jobs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:text="@string/hello_accepted_jobs_fragment" />
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/accepted_fragment_cardview1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            app:cardBackgroundColor="#AED581"
+            android:visibility="invisible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/ftv_invoice_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Job Number: "
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/ftv_invoice_number_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_toRightOf="@id/ftv_invoice_number"/>
+                <TextView
+                    android:id="@+id/ftv_recipient_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recipient Name: "
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_below="@id/ftv_invoice_number"
+                    android:layout_marginTop="4dp"/>
+                <TextView
+                    android:id="@+id/ftv_recipient_name_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_toRightOf="@id/ftv_recipient_name"
+                    android:layout_alignTop="@id/ftv_recipient_name"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/accepted_fragment_cardview2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/accepted_fragment_cardview1"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            app:cardBackgroundColor="#AED581"
+            android:visibility="invisible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/ftv_invoice_number2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Job Number: "
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/ftv_invoice_number_value2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_toRightOf="@id/ftv_invoice_number2"/>
+                <TextView
+                    android:id="@+id/ftv_recipient_name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recipient Name: "
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_below="@id/ftv_invoice_number2"
+                    android:layout_marginTop="4dp"/>
+                <TextView
+                    android:id="@+id/ftv_recipient_name_value2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_toRightOf="@id/ftv_recipient_name2"
+                    android:layout_alignTop="@id/ftv_recipient_name2"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/accepted_fragment_cardview3"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/accepted_fragment_cardview2"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            app:cardBackgroundColor="#AED581"
+            android:visibility="invisible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/ftv_invoice_number3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Job Number: "
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/ftv_invoice_number_value3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ftv_invoice_number3"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/ftv_recipient_name3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recipient Name: "
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_below="@id/ftv_invoice_number3"/>
+                <TextView
+                    android:id="@+id/ftv_recipient_name_value3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_toRightOf="@id/ftv_recipient_name3"
+                    android:layout_alignTop="@id/ftv_recipient_name3"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_accepted_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        style="?android:attr/progressBarStyleLarge"/>
+
 
 </RelativeLayout>

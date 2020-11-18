@@ -41,22 +41,34 @@ class PendingJobsFragment : Fragment() {
 
         hideViews() //this is done for a moment so that we dont have blanks displayed during DB call
 
-        createSampleData() //create sample data and add it to firestore
+        //createSampleData()
 
         retrieveData()
 
-        fragment_cardview1.setOnClickListener {
-            val detailIntent = Intent(getActivity(), DetailsActivity::class.java)
-            detailIntent.putExtra("invoice_number",ftv_invoice_number_value.toString())
-            startActivityForResult(detailIntent, REQUEST_CODE)
-        }
+        initializeClickListeners()
 
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+    fun initializeClickListeners(){
 
-        //update the screen depending on whether user selected accept job or close
+        fragment_cardview1.setOnClickListener {
+            val detailIntent = Intent(getActivity(), DetailsActivity::class.java)
+            detailIntent.putExtra("invoice_number",ftv_invoice_number_value.text.toString())
+            startActivity(detailIntent)
+        }
+
+        fragment_cardview2.setOnClickListener {
+            val detailIntent = Intent(getActivity(), DetailsActivity::class.java)
+            detailIntent.putExtra("invoice_number",ftv_invoice_number_value2.toString())
+            startActivity(detailIntent)
+        }
+
+        fragment_cardview3.setOnClickListener {
+            val detailIntent = Intent(getActivity(), DetailsActivity::class.java)
+            detailIntent.putExtra("invoice_number",ftv_invoice_number_value3.toString())
+            startActivity(detailIntent)
+        }
+
     }
 
     private fun hideViews(){
